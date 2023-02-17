@@ -61,7 +61,7 @@ onMounted(async () => {
       </button>
     </div>
     <div v-if="connectionUrl" flex items-center justify-center p4>
-      <QrcodeVue :value="connectionUrl" :size="500" level="H" :margin="4" rounded-10 />
+      <QrcodeVue :value="connectionUrl" :size="500" level="H" :margin="4" foreground="#0ea5e9" rounded-10 />
     </div>
   </div>
 </template>
