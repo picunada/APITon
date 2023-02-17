@@ -16,17 +16,15 @@ const connectWallet = (wallet: WalletApp) => {
   if (walletRefs.value !== undefined) {
     walletRefs.value.forEach((button: HTMLButtonElement) => {
       if (wallet.name === button.textContent?.trim()) {
-        if (wallet.embedded || wallet.injected) {
-          button.disabled = true
+        if (wallet.embedded || wallet.injected)
           connector.connect({ jsBridgeKey: wallet.jsBridgeKey })
-        }
       }
       else if (wallet.bridgeUrl) {
-        button.disabled = true
         connectionUrl.value = connector.connect({
           universalLink: wallet.universalLink,
           bridgeUrl: wallet.bridgeUrl,
         })
+        console.log(connectionUrl.value)
       }
     })
   }
@@ -63,7 +61,7 @@ onMounted(async () => {
       </button>
     </div>
     <div v-if="connectionUrl" flex items-center justify-center p4>
-      <QrcodeVue :value="connectionUrl" :size="300" :margin="3" />
+      <QrcodeVue :value="connectionUrl" :size="500" level="H" :margin="4" rounded-10 />
     </div>
   </div>
 </template>
